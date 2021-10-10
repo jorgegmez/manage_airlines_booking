@@ -24,7 +24,7 @@ public class Usuario {
     Date fecha_nacimiento;
     String correo_electronico;
     String contrasenna;
-    int role;
+    int role; // 1 = Pajero / 2 = Admin
     
     public void registrar_usuario()
     {
