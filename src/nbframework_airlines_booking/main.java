@@ -30,7 +30,7 @@ public class main {
             break;
 
             case 2:
-                usuario.registrar_usuario();
+                usuario.registro_usuario();
             break;
 
             default:
