@@ -17,8 +17,8 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                Usuario usuario = new Usuario();
-        
+        Usuario usuario = new Usuario();
+        usuario.cargarAdmin();
         int opcion = 0;
         
         opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de la opción que desea: \n" + "1: Iniciar Sesión \n" + "2: Registrar Usuario"));

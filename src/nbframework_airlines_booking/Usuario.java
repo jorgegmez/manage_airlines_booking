@@ -19,6 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.text.MaskFormatter;
 
 
 /**
@@ -30,11 +33,11 @@ public class Usuario extends JFrame {
     String apellidos;
     String cod_pasajero;
     Double millas_acumuladas;
-    Date fecha_nacimiento;
+    String fecha_nacimiento;
     String correo_electronico;
     String contrasenna;
     Usuario usuarios[] = new Usuario[2];
-    boolean isAdmin; // false = Pajero / true = Admin
+    boolean isAdmin = false; // false = Pasajero / true = Admin
     private final static boolean shouldFill = true;
     private final static boolean shouldWeightX = true;
     private final static boolean RIGHT_TO_LEFT = true;
@@ -107,7 +110,7 @@ public class Usuario extends JFrame {
         c.gridx = 2;
         c.gridy = 2;
         pane.add(FechaNacimientoLabel, c);
-        JFormattedTextField DateTextField = new JFormattedTextField(new Date());
+        JFormattedTextField DateTextField = new JFormattedTextField(createFormatter("YYYY-MM-DD"));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 2;
         c.gridx = 1;
@@ -141,7 +144,7 @@ public class Usuario extends JFrame {
         c.gridx = 1;
         c.gridy = 4;
         pane.add(PasswordTextField, c);
-        	
+        
         // Button
 	JButton RegisterButton = new JButton("Registrar");
         c.fill = GridBagConstraints.CENTER;
@@ -150,19 +153,44 @@ public class Usuario extends JFrame {
         c.gridy = 5;
         pane.add(RegisterButton, c);
         
-        nombre = NombreTextField.getText();
-	apellidos = ApellidosTextField.getText();
-	//cod_pasajero = <VALUE_PENDING>.getText();
-	//millas_acumuladas = <VALUE_PENDING>.getText();
-	fecha_nacimiento = DateTextField.getText();
-	correo_electronico = EmailTextField.getText();
-	contrasenna = PasswordTextField.getText();
+               
+        RegisterButton.addActionListener(new ActionListener(){  
+            public void actionPerformed(ActionEvent e){
+                    int number = (int)(Math.random() * 1000);
+                    Usuario UsuarioPasajero = new Usuario();
+                    UsuarioPasajero.nombre = NombreTextField.getText();
+                    UsuarioPasajero.apellidos = ApellidosTextField.getText();
+                    UsuarioPasajero.cod_pasajero = "pasajero-" + number;
+                    UsuarioPasajero.millas_acumuladas = 0.0;
+                    UsuarioPasajero.fecha_nacimiento = DateTextField.getText();
+                    UsuarioPasajero.correo_electronico = EmailTextField.getText();
+                    UsuarioPasajero.contrasenna = String.valueOf(PasswordTextField.getPassword());
+                    UsuarioPasajero.isAdmin = false;
+                    saveData(UsuarioPasajero);
+            }  
+        });    
+    }
+    
+    private void saveData(Usuario UsuarioPasajero)
+    {
+        usuarios[1] = UsuarioPasajero;
+        JOptionPane.showMessageDialog(null, "Usuario" + usuarios[1].nombre + " Admin " + usuarios[0].nombre);
         
     }
     
-    public static void cargarAdmin()
+    public void cargarAdmin()
     {
-        
+       int number = (int)(Math.random() * 1000);
+       Usuario UsuarioAdmin = new Usuario();
+       UsuarioAdmin.nombre = "Jorge";
+       UsuarioAdmin.apellidos = "Gomez";
+       UsuarioAdmin.cod_pasajero = "admin-" + number;
+       UsuarioAdmin.correo_electronico = "jorge.admin@gmail.com";
+       UsuarioAdmin.fecha_nacimiento = "1997/09/23";
+       UsuarioAdmin.millas_acumuladas = null;
+       UsuarioAdmin.isAdmin = true;
+       UsuarioAdmin.contrasenna = "admin123!";
+       usuarios[0] = UsuarioAdmin;
     }
     
     
@@ -170,5 +198,16 @@ public class Usuario extends JFrame {
     public void iniciar_sesion()
     {
         
+    }
+    
+    protected MaskFormatter createFormatter(String s) {
+        MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter(s);
+        } catch (java.text.ParseException exc) {
+            System.err.println("formatter is bad: " + exc.getMessage());
+            System.exit(-1);
+        }
+        return formatter;
     }
 }
