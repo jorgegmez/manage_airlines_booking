@@ -151,6 +151,12 @@ public class Usuario extends JFrame {
         pane.add(RegisterButton, c);
         
         nombre = NombreTextField.getText();
+	apellidos = ApellidosTextField.getText();
+	//cod_pasajero = <VALUE_PENDING>.getText();
+	//millas_acumuladas = <VALUE_PENDING>.getText();
+	fecha_nacimiento = DateTextField.getText();
+	correo_electronico = EmailTextField.getText();
+	contrasenna = PasswordTextField.getText();
         
     }
     
