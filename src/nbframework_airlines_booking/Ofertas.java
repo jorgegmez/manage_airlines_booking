@@ -22,6 +22,15 @@ public class Ofertas {
     Double precio;
     Boolean activo;
     
+    String nombres_array[] = new String[100];
+    Date fecha_array[] = new Date[100];
+    String condiciones_array[] = new String[100];
+// The following can be changed as 
+    int descuento_array[] = new int[100];
+    int precio_array[] = new int[100];
+    
+    i=0
+    
     public void menu_oferta()
     {
         int opcion = 0;
@@ -65,8 +74,8 @@ public class Ofertas {
         JTextField descuento = new JTextField();
         JTextField precio = new JTextField();
 
-
-        final JComponent[] inputs = new JComponent[] {
+        // The following can be used to take info for the variables, however I would propose to use arrays instead to sort the info accordingly
+        /*final JComponent[] inputs = new JComponent[] {
                 new JLabel("Nombre de la oferta: "),
                 nombre_input,
                 new JLabel("Valido hasta: "),
@@ -78,12 +87,21 @@ public class Ofertas {
                 new JLabel("Precio: "),
                 precio
         };
+
         int response = JOptionPane.showConfirmDialog(null, inputs, "Registro de Oferta", JOptionPane.PLAIN_MESSAGE);
 
         if (response == JOptionPane.OK_OPTION) {
             System.out.println("Oferta registrada con exito!");
-        }
-    }
+        }*/
+       int registros_q = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la cantidad de ofertas a registrar"))
+       
+           for (i ; i < registros_q; i++) {
+        nombres_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nombre de la oferta"));
+        condiciones_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese las condiciones"));
+        descuento_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el descuento"));
+        precio_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio"));
+ 
+}
     
     private void modificar_oferta()
     {
@@ -92,18 +110,35 @@ public class Ofertas {
     
     private void eliminar_oferta()
     {
-        // Write code here
+        int registros_e = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la oferta a eliminar"));
+        nombres_array[registros_e]= "";
+        condiciones_array[registros_e]="";
+        descuento_array[registros_e]= 0;
+        precio_array[registros_e]= 0;
+        
+        JOptionPane.showMessageDialog("Oferta Eliminada. Volviendo al menu de opciones");
+        Autenticacion menu_return = new Autenticacion();
+        menu_return.logged_menu();
+        //The confirmation to remove another offer can be implemented
     }
-    
+        public Ofertas listar_ofertas()
+    {
+        int registros_m = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la oferta a mostrar"));
+
+        JOptionPane.showInputDialog("Mostrando oferta # " + registros m +
+                                    "\nNombre: " + nombres_array[registros_m] +
+                                   "\nCondiciones: " + condiciones_array[registros_m] +
+                                   "\nDescuento: " + descuento_array[registros_m] +
+                                   "\nPrecio: " precio_array[registros_m]);
+
+        return null;
+    }
+     
     private void salir()
     {
         // Write code here
     }
     
-    public Ofertas listar_ofertas()
-    {
-        // Write code here
-        return null;
-    }
+
     
 }
