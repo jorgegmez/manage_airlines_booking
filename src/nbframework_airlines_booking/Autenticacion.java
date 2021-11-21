@@ -71,7 +71,7 @@ public class Autenticacion extends JFrame {
                     "Ingrese el número de la opción que desea: \n" +
                     "1: Crear Oferta \n" +
                     "2: Modificar Oferta \n" +
-                    "3: Eliminar Oferta" +
+                    "3: Eliminar Oferta \n" +
                     "4: Salir"));
 
                 switch (opcion)
@@ -90,6 +90,7 @@ public class Autenticacion extends JFrame {
 
                     case 4:
                         Salir = true;
+                        unlogged_menu();
                     break;
 
                     default:
@@ -98,7 +99,7 @@ public class Autenticacion extends JFrame {
                         "Ingrese el número de la opción que desea: \n" +
                         "1: Crear Oferta \n" +
                         "2: Modificar Oferta \n" +
-                        "3: Eliminar Oferta" +
+                        "3: Eliminar Oferta \n" +
                         "4: Salir"));
                     break;
                 }
@@ -108,9 +109,9 @@ public class Autenticacion extends JFrame {
                 opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de la opción que desea: \n" +
                     "1: Reservar Vuelo \n" +
                     "2: Modificar Vuelo \n" +
-                    "3: Eliminar Reserva de Vuelo" +
-                    "4: Buscar Ofertas" +
-                    "5: Salir"));
+                    "3: Eliminar Reserva de Vuelo \n" +
+                    "4: Buscar Ofertas \n" +
+                    "5: Salir \n"));
                 
                 switch (opcion)
                 {
@@ -132,6 +133,7 @@ public class Autenticacion extends JFrame {
 
                     case 5:
                         Salir = true;
+                        unlogged_menu();
                     break;
 
                     default:
@@ -139,8 +141,8 @@ public class Autenticacion extends JFrame {
                         opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de la opción que desea: \n" +
                         "1: Reservar Vuelo \n" +
                         "2: Modificar Vuelo \n" +
-                        "3: Eliminar Reserva de Vuelo" +
-                        "4: Buscar Ofertas" +
+                        "3: Eliminar Reserva de Vuelo \n" +
+                        "4: Buscar Ofertas \n" +
                         "5: Salir"));
                     break;
                 }
@@ -353,12 +355,11 @@ public class Autenticacion extends JFrame {
                 boolean UserFound = false;
                 final String LoginEmail = EmailTextField.getText();
                 final String LoginPassword = String.valueOf(PasswordTextField.getPassword());
-                JOptionPane.showMessageDialog(null, "Usuario length" + Usuario.usuarios.length);
-                JOptionPane.showMessageDialog(null, "Usuario" + Usuario.usuarios[0]);
                 
                 for (int i = 0; i < Usuario.usuarios.length; i++)
-                    {
-                        if (Usuario.usuarios[i].getCorreo_electronico().equals(LoginEmail) && Usuario.usuarios[i].getContrasenna().equals(LoginPassword))
+                {
+                    if (Usuario.usuarios[i].getCorreo_electronico().equals(LoginEmail)
+                    && Usuario.usuarios[i].getContrasenna().equals(LoginPassword))
                     {
                         usuarioLogeado = Usuario.usuarios[i];
                         UserFound = true;
@@ -366,8 +367,12 @@ public class Autenticacion extends JFrame {
                         logged_menu(usuarioLogeado.isIsAdmin());
                     }
                 }
-                JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos. Intente de nuevo!");
-                unlogged_menu();
+                if (!UserFound)
+                {
+                    frame.dispose();
+                    JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos. Intente de nuevo!");
+                    unlogged_menu();
+                }
             }  
         });
     }

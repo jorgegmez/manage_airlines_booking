@@ -5,8 +5,6 @@
  */
 package nbframework_airlines_booking;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Ariel / Jorge / Jean
@@ -98,7 +96,6 @@ public class Usuario {
        UsuarioAdmin.millas_acumuladas = null;
        UsuarioAdmin.isAdmin = true;
        UsuarioAdmin.contrasenna = "admin123!";
-       JOptionPane.showMessageDialog(null, "Usuario Admin " + UsuarioAdmin.correo_electronico);
        usuarios[0] = UsuarioAdmin;
     }
 }
