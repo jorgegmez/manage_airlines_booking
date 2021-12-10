@@ -22,12 +22,12 @@ public class Ofertas {
     Double precio;
     Boolean activo;
     
-    String nombres_array[] = new String[100];
+    
     Date fecha_array[] = new Date[100];
-    String condiciones_array[] = new String[100];
+    
 // The following can be changed as 
-    int descuento_array[] = new int[100];
-    int precio_array[] = new int[100];
+    
+    
     
     i=0
     
@@ -94,13 +94,14 @@ public class Ofertas {
             System.out.println("Oferta registrada con exito!");
         }*/
        int registros_q = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese la cantidad de ofertas a registrar"))
-       
-           for (i ; i < registros_q; i++) {
-        nombres_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nombre de la oferta"));
-        condiciones_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese las condiciones"));
-        descuento_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el descuento"));
-        precio_array[i]=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio"));
- 
+       Ofertas_DB datos[] = new Ofertas_DB [registros_q]
+           for (i = 0; i < datos; i++) {
+        String nombre =Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nombre de la oferta"));
+        String condiciones =Integer.parseInt(JOptionPane.showInputDialog("Ingrese las condiciones"));
+        int descuento =Integer.parseInt(JOptionPane.showInputDialog("Ingrese el descuento"));
+        int precio =Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio"));
+            
+               datos[i]= new Ofertas_DB(nombre,condiciones,descuento,precio)
 }
     
     private void modificar_oferta()
