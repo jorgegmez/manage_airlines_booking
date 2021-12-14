@@ -12,9 +12,11 @@ import java.util.Date;
  * @author Ariel
  */
 public class Vuelo {
+
      public void Menu_Vuelo()
     {
         Relleno_Arreglo();
+
      boolean seguir = true;
         
         while (seguir){
@@ -46,8 +48,8 @@ public class Vuelo {
                     break;
                 case 6:
                     JOptionPane.showMessageDialog(null, "Muchas gracias por usar el sistema de reservas");
-                   System.exit(0);
-                   break;
+                    seguir =false;
+                    break;
                     default:
                     JOptionPane.showMessageDialog(null, "Ingrese un valor correcto del Menú");
                      break;
@@ -66,13 +68,16 @@ public class Vuelo {
     {
     for(int c=0; c<Avion[0].length;c++)
     {
+
     Avion[f][c]="d";
+
     }
     }
     }
      
    public void Reserva_Vuelo()
    {
+
        /*
        int cant_pasajeros;
        Double costo;
@@ -91,6 +96,7 @@ public class Vuelo {
                                                                       "5. COLOMBIA\n"+
                                                                       "6. Salir de reservas\n"));
             
+
         if (opcion==1){
         String ida = JOptionPane.showInputDialog("Ingrese la fecha de salida, (dd/mm/aaaa)");
         String vuelta = JOptionPane.showInputDialog("Ingrese la fecha de regreso, (dd/mm/aaaa)");        
@@ -103,6 +109,7 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
+
         int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
@@ -124,8 +131,9 @@ public class Vuelo {
         
         if(otro==1)
         {
-        
+            seguir = false;
         }
+        
         else{
              return;
         }
@@ -143,6 +151,7 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
+
         int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
@@ -164,8 +173,10 @@ public class Vuelo {
         
         if(otro==1)
         {
-        
+
+            seguir = false;
         }
+        
         else{
              return;
         }
@@ -183,6 +194,7 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
+
         int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
@@ -192,7 +204,9 @@ public class Vuelo {
         
         if (Avion[fila][campo].equals("d"))
         {
+
             Avion[fila][campo]= Pasaporte;
+
             JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
         }
         else
@@ -204,6 +218,13 @@ public class Vuelo {
         
         if(otro==1)
         {
+            seguir = false;
+        }
+        
+               
+             if (opcion==4){
+        cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto"));
+        fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
         
         }
         else{
@@ -223,6 +244,7 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
+
         int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
@@ -232,6 +254,7 @@ public class Vuelo {
         
         if (Avion[fila][campo].equals("d"))
         {
+
             Avion[fila][campo]= Pasaporte;
             JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
         }
@@ -244,8 +267,10 @@ public class Vuelo {
         
         if(otro==1)
         {
-        
-        }
+
+            seguir = false;
+        }       
+       
         else{
              return;
         }
@@ -262,8 +287,9 @@ public class Vuelo {
                                                                 "4.Asiento de pasillo izquierda\n"+
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
-        
+
         int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
         
@@ -272,6 +298,7 @@ public class Vuelo {
         
         if (Avion[fila][campo].equals("d"))
         {
+
             Avion[fila][campo]= Pasaporte;
             JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
         }
@@ -284,8 +311,11 @@ public class Vuelo {
         
         if(otro==1)
         {
-        
+
+            seguir = false;
         }
+        
+
         else{
              return;
         }
@@ -303,6 +333,7 @@ public class Vuelo {
          
      }
    }
+
    
    public void Modificar_Reserva_Vuelo()
 {
@@ -316,6 +347,7 @@ boolean modificar = true;
  fila--;
  campo--;
             
+
     String Pasaporte = JOptionPane.showInputDialog("Ingrese el número de cedula que le pertenece a ese campo");
              
     if (Avion[fila][campo].equals(Pasaporte))
@@ -331,6 +363,7 @@ campoM--;
                     
 if (Avion[filaM][campoM].equals("d"))
 {
+
     Avion[filaM][campoM]= Pasaporte;
     Avion[fila][campo]="D";
     JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
@@ -409,8 +442,7 @@ modificar=false;
         
         while(seguir)
         {
-            String Pasaporte = JOptionPane.showInputDialog("Ingrese el número de cedula a consultar");
-            
+            String Pasaporte = JOptionPane.showInputDialog("Ingrese el número de cedula a consultar");         
             for(int f=0; f<Avion.length; f++)
             {
                 for(int c=0; c<Avion[0].length; c++)
@@ -442,8 +474,7 @@ modificar=false;
            
            contador =0;
         }       
-   }
-   
+   }   
      public void Disponibilidad_Reservas_Vuelo()
    {
         String Reserva ="";
