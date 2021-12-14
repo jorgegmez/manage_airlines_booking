@@ -8,17 +8,14 @@ package nbframework_airlines_booking;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import javax.swing.text.DateFormatter;
-import javax.swing.text.MaskFormatter;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -27,6 +24,7 @@ import javax.swing.text.MaskFormatter;
 public class Autenticacion extends JFrame {
     Usuario Usuario = new Usuario();
     Usuario usuarioLogeado = new Usuario();
+    Vuelo MiVuelo = new Vuelo();
     private final static boolean shouldFill = true;
     private final static boolean shouldWeightX = true;
     private final static boolean RIGHT_TO_LEFT = true;
@@ -100,38 +98,31 @@ public class Autenticacion extends JFrame {
                         "1: Crear Oferta \n" +
                         "2: Modificar Oferta \n" +
                         "3: Eliminar Oferta \n" +
-                        "4: Salir"));
+                        "4: Aministrar vuelo \n" +
+                        "5: Salir"));
                     break;
                 }
             }
             else
             {
+                Vuelo MiVuelo = new Vuelo();
+                Ofertas MiOfertas = new Ofertas();
                 opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de la opción que desea: \n" +
-                    "1: Reservar Vuelo \n" +
-                    "2: Modificar Vuelo \n" +
-                    "3: Eliminar Reserva de Vuelo \n" +
-                    "4: Buscar Ofertas \n" +
-                    "5: Salir \n"));
+                    "1: Aministrar vuelo \n" +
+                    "2: Buscar Ofertas \n" +
+                    "3: Salir \n"));
                 
                 switch (opcion)
                 {
                     case 1:
-                        // Metodo Reservar Vuelo
+                        MiVuelo.Menu_Vuelo();
                     break;
 
                     case 2:
-                        // Metodo Modificar Vuelo
+                        MiOfertas.menu_oferta();
                     break;
 
                     case 3:
-                        // Metodo Eliminar Vuelo
-                    break;
-                    
-                    case 4:
-                        // Metodo Buscar Ofertas
-                    break;
-
-                    case 5:
                         Salir = true;
                         unlogged_menu();
                     break;
@@ -139,11 +130,9 @@ public class Autenticacion extends JFrame {
                     default:
                         JOptionPane.showMessageDialog(null, "Favor ingrese una opcion valida.");
                         opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de la opción que desea: \n" +
-                        "1: Reservar Vuelo \n" +
-                        "2: Modificar Vuelo \n" +
-                        "3: Eliminar Reserva de Vuelo \n" +
-                        "4: Buscar Ofertas \n" +
-                        "5: Salir"));
+                        "1: Aministrar vuelo \n" +
+                        "2: Buscar Ofertas \n" +
+                        "3: Salir \n"));
                     break;
                 }
             }
@@ -156,13 +145,21 @@ public class Autenticacion extends JFrame {
         setLayout(new GridBagLayout());
         JFrame frame = new JFrame("Registrar Usuario");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = screenSize.height;
+        int width = screenSize.width;
+        frame.setSize(width/2, height/2);
+
         Usuario.cargarAdmin();
         //Set up the content pane.
         registrar_usuario(frame.getContentPane(), frame);
- 
+        
         //Display the window.
         frame.pack();
+        
+        // center the jframe on screen
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
     }
@@ -173,13 +170,21 @@ public class Autenticacion extends JFrame {
         setLayout(new GridBagLayout());
         JFrame frame = new JFrame("Iniciar Sesión");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = screenSize.height;
+        int width = screenSize.width;
+        frame.setSize(width/2, height/2);
  
         Usuario.cargarAdmin();
         //Set up the content pane.
         iniciar_sesion(frame.getContentPane(), frame);
- 
+        
         //Display the window.
         frame.pack();
+        
+        // center the jframe on screen
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     
@@ -229,15 +234,13 @@ public class Autenticacion extends JFrame {
         pane.add(ApellidosTextField, c);
         
         // Fecha Nacimiento input/label
-        JLabel FechaNacimientoLabel = new JLabel("Fecha Nacimiento: ");
+        JLabel FechaNacimientoLabel = new JLabel("Fecha Nacimiento: (dd-mm-yyyy)");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 2;
         c.gridx = 2;
         c.gridy = 2;
         pane.add(FechaNacimientoLabel, c);
-        DateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-        DateFormatter df = new DateFormatter(format);
-        JFormattedTextField DateTextField = new JFormattedTextField(df);
+        JTextField DateTextField = new JTextField();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 2;
         c.gridx = 1;
@@ -375,16 +378,5 @@ public class Autenticacion extends JFrame {
                 }
             }  
         });
-    }
-    
-    protected MaskFormatter createFormatter(String s) {
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter(s);
-        } catch (java.text.ParseException exc) {
-            System.err.println("formatter is bad: " + exc.getMessage());
-            System.exit(-1);
-        }
-        return formatter;
     }
 }

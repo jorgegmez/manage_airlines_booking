@@ -11,7 +11,7 @@ public class Oferta_DB {
    public int Precio;
    
    public Oferta_DB(String nombre, String condiciones, int descuento, int precio){
-       this.Nombre = nombre;
+       this.Nombres = nombre;
        this.Condiciones = condiciones;
        this.Descuento = descuento;
        this.Precio = precio;
