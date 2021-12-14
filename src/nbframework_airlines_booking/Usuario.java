@@ -5,164 +5,97 @@
  */
 package nbframework_airlines_booking;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
-import java.util.Date;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import java.awt.*;
-
-
 /**
  *
  * @author Ariel / Jorge / Jean
  */
-public class Usuario extends JFrame {
-    String nombre;
-    String apellidos;
-    String cod_pasajero;
-    Double millas_acumuladas;
-    Date fecha_nacimiento;
-    String correo_electronico;
-    String contrasenna;
+public class Usuario {
+    private String nombre;
+    private String apellidos;
+    private String cod_pasajero;
+    private Double millas_acumuladas;
+    private String fecha_nacimiento;
+    private String correo_electronico;
+    private String contrasenna;
     Usuario usuarios[] = new Usuario[2];
-    boolean isAdmin; // false = Pajero / true = Admin
-    private final static boolean shouldFill = true;
-    private final static boolean shouldWeightX = true;
-    private final static boolean RIGHT_TO_LEFT = true;
-    
-    public void registro_usuario()
-    {
-        //Create and set up the window.
-        setLayout(new GridBagLayout());
-        JFrame frame = new JFrame("Registrar Usuario");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-        //Set up the content pane.
-        registrar_usuario(frame.getContentPane());
- 
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
-        
-    }
-    
-    private void registrar_usuario(Container pane)
-    {
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
-        pane.setLayout(new GridBagLayout());
-        
-        GridBagConstraints c = new GridBagConstraints();
+    private boolean isAdmin = false; // false = Pasajero / true = Admin
 
-        if (shouldFill) {
-            //natural height, maximum width
-            c.fill = GridBagConstraints.HORIZONTAL;
-        }
-        
-        // Nombre input/label
-        JLabel NombreLabel = new JLabel("Nombre: ");
-        if (shouldWeightX)
-        {
-            c.weightx = 2;
-        }
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 2;
-        c.gridy = 0;
-        pane.add(NombreLabel, c);
-        JTextField NombreTextField = new JTextField(20);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 1;
-        c.gridy = 0;
-        pane.add(NombreTextField, c);
-        
-        // Apellidos input/label
-        JLabel ApellidoLabel = new JLabel("Apellidos: ");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 2;
-        c.gridy = 1;
-        pane.add(ApellidoLabel, c);
-        JTextField ApellidosTextField = new JTextField(20);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 1;
-        c.gridy = 1;
-        pane.add(ApellidosTextField, c);
-        
-        // Fecha Nacimiento input/label
-        JLabel FechaNacimientoLabel = new JLabel("Fecha Nacimiento: ");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 2;
-        c.gridy = 2;
-        pane.add(FechaNacimientoLabel, c);
-        JFormattedTextField DateTextField = new JFormattedTextField(new Date());
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 1;
-        c.gridy = 2;
-        pane.add(DateTextField, c);
-    
-        // Email input/label
-        JLabel EmailLabel = new JLabel("Correo Electrónico: ");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 2;
-        c.gridy = 3;
-        pane.add(EmailLabel, c);
-        JTextField EmailTextField = new JTextField(30);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 1;
-        c.gridy = 3;
-        pane.add(EmailTextField, c);
+    public String getNombre() {
+        return nombre;
+    }
 
-        // Pssword input/label
-        JLabel PasswordLabel = new JLabel("Contraseña: ");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 2;
-        c.gridy = 4;
-        pane.add(PasswordLabel, c);
-        JPasswordField PasswordTextField = new JPasswordField(16);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2;
-        c.gridx = 1;
-        c.gridy = 4;
-        pane.add(PasswordTextField, c);
-        	
-        // Button
-	JButton RegisterButton = new JButton("Registrar");
-        c.fill = GridBagConstraints.CENTER;
-        c.weightx = 4;
-        c.gridx = 1;
-        c.gridy = 5;
-        pane.add(RegisterButton, c);
-        
-        nombre = NombreTextField.getText();
-        
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
-    public static void cargarAdmin()
-    {
-        
+
+    public String getApellidos() {
+        return apellidos;
     }
-    
-    
-    
-    public void iniciar_sesion()
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCod_pasajero() {
+        return cod_pasajero;
+    }
+
+    public void setCod_pasajero(String cod_pasajero) {
+        this.cod_pasajero = cod_pasajero;
+    }
+
+    public Double getMillas_acumuladas() {
+        return millas_acumuladas;
+    }
+
+    public void setMillas_acumuladas(Double millas_acumuladas) {
+        this.millas_acumuladas = millas_acumuladas;
+    }
+
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public String getCorreo_electronico() {
+        return correo_electronico;
+    }
+
+    public void setCorreo_electronico(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
+    }
+
+    public String getContrasenna() {
+        return contrasenna;
+    }
+
+    public void setContrasenna(String contrasenna) {
+        this.contrasenna = contrasenna;
+    }
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public void cargarAdmin()
     {
-        
+       int number = (int)(Math.random() * 1000);
+       Usuario UsuarioAdmin = new Usuario();
+       UsuarioAdmin.nombre = "Jorge";
+       UsuarioAdmin.apellidos = "Gomez";
+       UsuarioAdmin.cod_pasajero = "admin-" + number;
+       UsuarioAdmin.correo_electronico = "jorge.admin@gmail.com";
+       UsuarioAdmin.fecha_nacimiento = "1997/09/23";
+       UsuarioAdmin.millas_acumuladas = null;
+       UsuarioAdmin.isAdmin = true;
+       UsuarioAdmin.contrasenna = "admin123!";
+       usuarios[0] = UsuarioAdmin;
     }
 }

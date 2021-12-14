@@ -12,10 +12,11 @@ import java.util.Date;
  * @author Ariel
  */
 public class Vuelo {
-    
+
      public void Menu_Vuelo()
     {
-    
+        Relleno_Arreglo();
+
      boolean seguir = true;
         
         while (seguir){
@@ -67,37 +68,40 @@ public class Vuelo {
     {
     for(int c=0; c<Avion[0].length;c++)
     {
-    Avion[f][c]="D";
+
+    Avion[f][c]="d";
+
     }
     }
     }
      
    public void Reserva_Vuelo()
    {
-   Date fecha_salida;
-   Date fecha_llegada;
-   int cant_pasajeros;
-   int cedula;
-   Double costo;
-   int fila;
-   int campo;
-    
+
+       /*
+       int cant_pasajeros;
+       Double costo;
+       */
+
     boolean seguir = true;
+    
+    //int cant_reservas = 0;
         
      while (seguir){
-        
-            int opcion = Integer.parseInt(JOptionPane.showInputDialog("Elija el destino al que desea reservar\n"+
-                                                                      "1. UNITED STATE"
-                    + "\n"+
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog("Elija el destino al que desea reservar\n"+
+                                                                      "1. UNITED STATE\n"+
                                                                       "2. MEXICO\n"+
                                                                       "3. PAMANA\n"+
                                                                       "4. GUATEMALA\n"+
                                                                       "5. COLOMBIA\n"+
                                                                       "6. Salir de reservas\n"));
             
-         if (opcion==1){
-        cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto"));
-        fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
+
+        if (opcion==1){
+        String ida = JOptionPane.showInputDialog("Ingrese la fecha de salida, (dd/mm/aaaa)");
+        String vuelta = JOptionPane.showInputDialog("Ingrese la fecha de regreso, (dd/mm/aaaa)");        
+        String Pasaporte = JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto");
+        int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
                                                                 "1.Asiento de ventana derecha\n"+
                                                                 "2.Asiento de en medio derecha\n"+
                                                                 "3.Asiento de pasillo derecha\n"+
@@ -105,7 +109,8 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
-        campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
+
+        int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
         
@@ -114,7 +119,7 @@ public class Vuelo {
         
         if (Avion[fila][campo].equals("d"))
         {
-            Avion[fila][campo]= cedula;
+            Avion[fila][campo]= Pasaporte;
             JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
         }
         else
@@ -129,11 +134,16 @@ public class Vuelo {
             seguir = false;
         }
         
+        else{
+             return;
+        }
         }  
         
         if (opcion==2){
-        cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto"));
-        fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
+        String ida = JOptionPane.showInputDialog("Ingrese la fecha de salida, (dd/mm/aaaa)");
+        String vuelta = JOptionPane.showInputDialog("Ingrese la fecha de regreso, (dd/mm/aaaa)");        
+        String Pasaporte = JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto");
+        int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
                                                                 "1.Asiento de ventana derecha\n"+
                                                                 "2.Asiento de en medio derecha\n"+
                                                                 "3.Asiento de pasillo derecha\n"+
@@ -141,7 +151,8 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
-        campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
+
+        int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
         
@@ -150,7 +161,52 @@ public class Vuelo {
         
         if (Avion[fila][campo].equals("d"))
         {
-            Avion[fila][campo]= cedula;
+            Avion[fila][campo]= Pasaporte;
+            JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Campo Ocupado");
+        }
+        
+        int otro = JOptionPane.showConfirmDialog(null, "¿Desea reservar otro campo?");
+        
+        if(otro==1)
+        {
+
+            seguir = false;
+        }
+        
+        else{
+             return;
+        }
+        }   
+        
+        if (opcion==3){
+        String ida = JOptionPane.showInputDialog("Ingrese la fecha de salida, (dd/mm/aaaa)");
+        String vuelta = JOptionPane.showInputDialog("Ingrese la fecha de regreso, (dd/mm/aaaa)");        
+        String Pasaporte = JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto");
+        int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
+                                                                "1.Asiento de ventana derecha\n"+
+                                                                "2.Asiento de en medio derecha\n"+
+                                                                "3.Asiento de pasillo derecha\n"+
+                                                                "4.Asiento de pasillo izquierda\n"+
+                                                                "5.Asiento de en medio izquierda\n"+
+                                                                "6.Asiento de ventana izquierda\n"));
+        
+
+        int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
+                                                             "Del campo #1 al #10 Son primera clase\n"+
+                                                             "Del campo # 11 al 50 Son clase turistica"));
+        
+        fila--;
+        campo--;
+        
+        if (Avion[fila][campo].equals("d"))
+        {
+
+            Avion[fila][campo]= Pasaporte;
+
             JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
         }
         else
@@ -165,47 +221,22 @@ public class Vuelo {
             seguir = false;
         }
         
-        }
-        
-               if (opcion==3){
-        cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto"));
-        fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
-                                                                "1.Asiento de ventana derecha\n"+
-                                                                "2.Asiento de en medio derecha\n"+
-                                                                "3.Asiento de pasillo derecha\n"+
-                                                                "4.Asiento de pasillo izquierda\n"+
-                                                                "5.Asiento de en medio izquierda\n"+
-                                                                "6.Asiento de ventana izquierda\n"));
-        
-        campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
-                                                             "Del campo #1 al #10 Son primera clase\n"+
-                                                             "Del campo # 11 al 50 Son clase turistica"));
-        
-        fila--;
-        campo--;
-        
-        if (Avion[fila][campo].equals("d"))
-        {
-            Avion[fila][campo]= cedula;
-            JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Campo Ocupado");
-        }
-        
-        int otro = JOptionPane.showConfirmDialog(null, "¿Desea reservar otro campo?");
-        
-        if(otro==1)
-        {
-            seguir = false;
-        }
-        
-        }
                
              if (opcion==4){
         cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto"));
         fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
+        
+        }
+        else{
+             return;
+        }
+        }  
+               
+        if (opcion==4){
+        String ida = JOptionPane.showInputDialog("Ingrese la fecha de salida, (dd/mm/aaaa)");
+        String vuelta = JOptionPane.showInputDialog("Ingrese la fecha de regreso, (dd/mm/aaaa)");        
+        String Pasaporte = JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto");
+        int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
                                                                 "1.Asiento de ventana derecha\n"+
                                                                 "2.Asiento de en medio derecha\n"+
                                                                 "3.Asiento de pasillo derecha\n"+
@@ -213,7 +244,8 @@ public class Vuelo {
                                                                 "5.Asiento de en medio izquierda\n"+
                                                                 "6.Asiento de ventana izquierda\n"));
         
-        campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
+
+        int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
                                                              "Del campo #1 al #10 Son primera clase\n"+
                                                              "Del campo # 11 al 50 Son clase turistica"));
         
@@ -222,7 +254,8 @@ public class Vuelo {
         
         if (Avion[fila][campo].equals("d"))
         {
-            Avion[fila][campo]= cedula;
+
+            Avion[fila][campo]= Pasaporte;
             JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
         }
         else
@@ -234,91 +267,107 @@ public class Vuelo {
         
         if(otro==1)
         {
+
             seguir = false;
+        }       
+       
+        else{
+             return;
         }
-        
-        }
-             
-               if (opcion==5){
-        cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto"));
-        fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
-                                                                "1.Asiento de ventana derecha\n"+
-                                                                "2.Asiento de en medio derecha\n"+
-                                                                "3.Asiento de pasillo derecha\n"+
-                                                                "4.Asiento de pasillo izquierda\n"+
-                                                                "5.Asiento de en medio izquierda\n"+
-                                                                "6.Asiento de ventana izquierda\n"));
-        
-        campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
-                                                             "Del campo #1 al #10 Son primera clase\n"+
-                                                             "Del campo # 11 al 50 Son clase turistica"));
-        
-        fila--;
-        campo--;
-        
-        if (Avion[fila][campo].equals("d"))
-        {
-            Avion[fila][campo]= cedula;
-            JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Campo Ocupado");
-        }
-        
-        int otro = JOptionPane.showConfirmDialog(null, "¿Desea reservar otro campo?");
-        
-        if(otro==1)
-        {
-            seguir = false;
-        }
-        
         } 
+             
+        if (opcion==5){
+        String ida = JOptionPane.showInputDialog("Ingrese la fecha de salida, (dd/mm/aaaa)");
+        String vuelta = JOptionPane.showInputDialog("Ingrese la fecha de regreso, (dd/mm/aaaa)");        
+        String Pasaporte = JOptionPane.showInputDialog("Ingrese el numero de cedula al que desea registrar el boleto");
+        int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila en donde desea su asiento \n"+
+                                                                "1.Asiento de ventana derecha\n"+
+                                                                "2.Asiento de en medio derecha\n"+
+                                                                "3.Asiento de pasillo derecha\n"+
+                                                                "4.Asiento de pasillo izquierda\n"+
+                                                                "5.Asiento de en medio izquierda\n"+
+                                                                "6.Asiento de ventana izquierda\n"));
+
+        int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo que desea reservar\n"+
+
+                                                             "Del campo #1 al #10 Son primera clase\n"+
+                                                             "Del campo # 11 al 50 Son clase turistica"));
+        
+        fila--;
+        campo--;
+        
+        if (Avion[fila][campo].equals("d"))
+        {
+
+            Avion[fila][campo]= Pasaporte;
+            JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Campo Ocupado");
+        }
+        
+        int otro = JOptionPane.showConfirmDialog(null, "¿Desea reservar otro campo?");
+        
+        if(otro==1)
+        {
+
+            seguir = false;
+        }
+        
+
+        else{
+             return;
+        }
+        }    
                
       if (opcion==6){
         JOptionPane.showMessageDialog(null, "Muchas gracias por usar el sistema de reservas");
-        seguir =false;
+        seguir = false;
         break;
-        default:
-        JOptionPane.showMessageDialog(null, "Ingrese un valor correcto del Menú");
+      
+         }else if (opcion >6){
+          JOptionPane.showMessageDialog(null, "Ingrese un numero correcto a la eleccion del menu");
         break;
-               
-   } 
-         }   
+      }
          
      }
-   
+   }
+
    
    public void Modificar_Reserva_Vuelo()
 {
 boolean seguir = true;
 boolean modificar = true;
 
-while (seguir){
-    int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila reservado"));
-    int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo reservado"));
+    while (seguir){
+        int fila = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila reservado"));
+        int campo = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo reservado"));
             
  fila--;
  campo--;
             
-String cedula = JOptionPane.showInputDialog("Ingrese el número de cedula que le pertenece a ese campo");
+
+    String Pasaporte = JOptionPane.showInputDialog("Ingrese el número de cedula que le pertenece a ese campo");
              
-if (Avion[fila][campo].equals(cedula))
+    if (Avion[fila][campo].equals(Pasaporte))
 {
     while(modificar)
 {
-JOptionPane.showMessageDialog(null, "Indique acontinuación los campos a los que desea cambiar la reservación");
-int filaM = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila a cambiar"));
-int campoM = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo a cambiar"));
+    JOptionPane.showMessageDialog(null, "Indique acontinuación los campos a los que desea cambiar la reservación");
+    int filaM = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Fila a cambiar"));
+    int campoM = Integer.parseInt(JOptionPane.showInputDialog("Digite el # Campo a cambiar"));
                     
 filaM--;
 campoM--;
                     
 if (Avion[filaM][campoM].equals("d"))
 {
-Avion[filaM][campoM]= cedula;
-Avion[fila][campo]="D";
-JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
+
+    Avion[filaM][campoM]= Pasaporte;
+    Avion[fila][campo]="D";
+    JOptionPane.showMessageDialog(null, "Campo Reservado Exitosamente");
+    
 modificar=false;
 }
   else
@@ -393,15 +442,14 @@ modificar=false;
         
         while(seguir)
         {
-            String cedula = JOptionPane.showInputDialog("Ingrese el número de cedula a consultar");
-            
+            String Pasaporte = JOptionPane.showInputDialog("Ingrese el número de cedula a consultar");         
             for(int f=0; f<Avion.length; f++)
             {
                 for(int c=0; c<Avion[0].length; c++)
                 {
-                    if(Avion[f][c].equals(cedula))
+                    if(Avion[f][c].equals(Pasaporte))
                     {
-                        JOptionPane.showMessageDialog(null, "El #Cedula "+cedula+" tiene el campo reservado: \n"+
+                        JOptionPane.showMessageDialog(null, "El #Cedula "+Pasaporte+" tiene el campo reservado: \n"+
                                                              "Fila # " +(f+1)+"\n"+
                                                              "Campo # " +(c+1));
                     }
@@ -426,9 +474,8 @@ modificar=false;
            
            contador =0;
         }       
-   }
-   
-   public void Disponibilidad_Reservas_Vuelo()
+   }   
+     public void Disponibilidad_Reservas_Vuelo()
    {
         String Reserva ="";
         
@@ -443,5 +490,4 @@ modificar=false;
         
         JOptionPane.showMessageDialog(null, Reserva);       
    }
-}
 }
